@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f7f2" />
+    <meta name="description" content="Explore the emotion behind your words with a machine learning model." />
+    <title>Emotion AI | A little more understood</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Emotion AI home">
+        <span class="brand-mark" aria-hidden="true">e</span>
+        <span>emotion<span class="brand-light">/ai</span></span>
+      </a>
+      <div class="model-status"><span class="status-dot"></span> MODEL ONLINE</div>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow"><span class="eyebrow-line"></span> A MOMENT OF CLARITY</p>
+        <h1 id="page-title">A little more<br /><em>understood.</em></h1>
+        <p class="intro-copy">Put a feeling into words. See what the model hears in them.</p>
+      </section>
+
+      <section class="workspace" aria-label="Emotion analysis">
+        <form class="composer" id="emotion-form">
+          <div class="composer-heading">
+            <div>
+              <p class="section-kicker">YOUR WORDS</p>
+              <h2>What's on your mind?</h2>
+            </div>
+            <span class="step-count">01 <span>/ 02</span></span>
+          </div>
+          <label class="visually-hidden" for="message">Write a sentence to analyze</label>
+          <textarea id="message" name="message" maxlength="1000" placeholder="I've been thinking about..." required></textarea>
+          <div class="input-meta"><span>Just a sentence is enough.</span><span id="char-count">0 / 1000</span></div>
+          <button class="analyze-button" id="analyze-button" type="submit">
+            <span>Read the feeling</span><span class="button-arrow" aria-hidden="true">↗</span>
+          </button>
+          <p class="privacy-note"><span aria-hidden="true">✳</span> Your words are analyzed, not saved.</p>
+        </form>
+
+        <section class="readout" id="readout" aria-live="polite" aria-busy="false">
+          <div class="readout-topline">
+            <p class="section-kicker">THE READOUT</p>
+            <span class="step-count">02 <span>/ 02</span></span>
+          </div>
+          <div class="empty-state" id="empty-state">
+            <div class="empty-art" aria-hidden="true">
+              <span class="art-ring ring-one"></span>
+              <span class="art-ring ring-two"></span>
+              <span class="art-core">✳</span>
+            </div>
+            <h2>A feeling takes shape here.</h2>
+            <p>Your result will include the closest emotion and how strongly the model recognizes it.</p>
+          </div>
+          <div class="result-state" id="result-state" hidden>
+            <div class="emotion-result">
+              <span class="emotion-emoji" id="emotion-emoji" aria-hidden="true"></span>
+              <div>
+                <p class="result-label">MOST LIKELY</p>
+                <h2 id="emotion-name"></h2>
+              </div>
+              <div class="confidence"><strong id="confidence-value"></strong><span>confidence</span></div>
+            </div>
+            <div class="probability-section">
+              <div class="probability-heading"><span>EMOTION MIX</span><span>MODEL SCORE</span></div>
+              <div id="probabilities" class="probability-list"></div>
+            </div>
+            <div class="suggestion" id="suggestion"></div>
+          </div>
+          <p class="error-message" id="error-message" role="alert" hidden></p>
+        </section>
+      </section>
+
+      <footer class="page-footer">
+        <span>TF-IDF + LOGISTIC REGRESSION</span>
+        <span>EMOTION DETECTION · 6 CLASSES</span>
+      </footer>
+    </main>
+  </body>
+</html>
